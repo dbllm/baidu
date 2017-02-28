@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>任务二</title>
+    <style media="screen">
+      html, body{
+        margin: 0;
+        padding: 0;
+        font-family: "microsoft yahei";
+      }
+      .all, header, .content, form{
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+      }
+      header{
+        background: #333333;
+        padding: 0 40px;
+        box-sizing: border-box;
+      }
+      h1{
+        float: left;
+        color: #E50400;
+      }
+      nav{
+        float: right;
+        color: white;
+        margin-top: 30px;
+      }
+      nav > div{
+        float: left;
+        margin-right: 10px;
+      }
+      nav > div:hover{
+        color: #999999;
+        cursor: pointer;
+      }
+      .content{
+        background: #DEDEDE;
+        padding: 20px 30px;
+        box-sizing: border-box;
+      }
+      article{
+        background: white;
+        overflow: hidden;
+        margin-bottom: 30px;
+      }
+      article:last-child{
+        margin-bottom: 0;
+      }
+      article > p{
+        text-indent: 32px;
+      }
+      article > span{
+        font-size: 12px;
+        color: #8B807A;
+      }
+      li{
+        list-style: none;
+      }
+      table{
+        background: white;
+      }
+      th{
+        background: #333333;
+        color: white;
+        border-right: 1px solid white;
+      }
+      th:last-child{
+        border-right: 0;
+      }
+      td{
+        border-right: 1px solid black;
+      }
+      td:last-child{
+        border-right: 0;
+      }
+      tfoot > tr{
+        background: #CCCCCC;
+      }
+      tfoot td{
+        border: 0;
+      }
+      form{
+        background: white;
+      }
+      .form-left{
+        float: left;
+        width: 40%;
+        box-sizing: border-box;
+        padding-right: 30px;
+      }
+      .form-left > * {
+        float: right;
+      }
+      .form-right{
+        float: right;
+        width: 60%;
+      }
+      button{
+        width: 80%;
+        display: block;
+        height: 50px;
+        color: white;
+        font-size: 16px;
+        background: #3355D0;
+        text-align: center;
+        line-height: 50px;
+        border-radius: 15px;
+        margin: 0 auto;
+        border: 1px solid #3355D0;
+      }
+      footer{
+        width: 100%;
+        height: 70px;
+        background: black;
+        color: white;
+        line-height: 70px;
+        text-align: center;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="all">
+      <header>
+        <h1>百度</h1>
+        <nav>
+          <div class="">导航链接一</div>
+          <div class="">导航链接二</div>
+          <div class="">导航链接三</div>
+          <div class="">导航链接四</div>
+        </nav>
+      </header>
+      <div class="content">
+        <article class="">
+          <h2>另一篇文章一级标题</h2>
+          <h4>另一篇文章二级标题</h4>
+          <span>另一篇文章作者</span>
+          <span>另一篇文章发表时间</span>
+          <p>
+            啊实打实的阿斯顿阿斯顿阿斯顿阿斯打算  <a href="http://ife.baidu.com">这里到百度前端学院</a>
+            <br />
+            阿斯顿阿斯顿阿斯顿阿斯的阿斯
+            <br />
+            <img src="img/h5.jpg" alt="">
+          </p>
+        </article>
+        <article class="">
+          <h2>文章一级标题</h2>
+          <h4>文章二级标题</h4>
+          <span>文章作者</span>
+          <span>文章发表时间</span>
+          <p>
+            啊实打实的阿斯顿阿斯顿阿斯顿阿斯打算  <a href="http://ife.baidu.com">这里到百度前端学院</a>
+            <br />
+            阿斯顿阿斯顿阿斯顿阿斯的阿斯
+            <br />
+            <img src="img/h5.jpg" alt="">
+          </p>
+          <ul>
+            <li>列表项目1</li>
+            <li>列表项目2</li>
+            <li>列表项目3</li>
+          </ul>
+        </article>
+        <div class="table">
+          <table cellspacing="0" cellpanding="0">
+            <thead>
+              <tr>
+                <th>头头头</th>
+                <th>头头头</th>
+                <th>头头头</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>身</td>
+                <td>身</td>
+                <td>身</td>
+              </tr>
+              <tr>
+                <td>身</td>
+                <td>身</td>
+                <td>身</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>底</td>
+                <td>底</td>
+                <td>底</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <form class="" action="javascript:;" method="post">
+          <h3>这里是一个标题</h3>
+          <div class="form-left">
+            <label for="mail">请输入邮箱地址</label>
+            <br>
+            <label for="password">请输入密码</label>
+            <br>
+            <label for="">性别</label>
+            <br>
+            <label for="city">城市</label>
+            <br>
+            <label for="">爱好</label>
+            <br>
+            <label for="">个人描述</label>
+          </div>
+          <div class="form-right">
+            <input type="text" name="" value="" placeholder="这是一个文本输入框" id="mail">
+            <br>
+            <input type="password" name="" value="" id="password">
+            <br>
+            <input type="radio" name="" value=""> 男
+            <input type="radio" name="" value=""> 女
+            <br>
+            <select class="" name="" id="city">
+              <option value="">北京</option>
+              <option value="">深圳</option>
+              <option value="">上海</option>
+            </select>
+            <br>
+            <input type="checkbox" name="" value=""> 运动
+            <input type="checkbox" name="" value=""> 艺术
+            <input type="checkbox" name="" value=""> 科学
+            <br>
+            <textarea name="name" rows="8" cols="80"></textarea>
+          </div>
+          <button type="button" name="button">按下button</button>
+        </form>
+      </div>
+      <footer>
+        版权所有
+      </footer>
+    </div>
+  </body>
+</html>
