@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>小薇学院-任务五</title>
+    <style media="screen">
+      html, body{
+        margin: 0;
+        padding: 0;
+        font-family: "microsoft yahei";
+      }
+      body{
+        background: #DEDEDE;
+      }
+      header{
+        overflow: auto;
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+      }
+      header h1{
+        float: left;;
+      }
+      header nav{
+        float: right;
+      }
+      nav li{
+        float: left;
+        list-style: none;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      nav li:hover{
+        color: grey;
+      }
+      .block{
+        /*margin-right: 400px;*/
+        margin: 0 400px 20px 20px;
+        background: white;
+        overflow: hidden;
+      }
+
+      .right_block{
+        float: right;
+        width: 360px;
+        background: white;
+        overflow: auto;
+        /*overflow: hidden;*/
+      }
+      .right_block textarea{
+        display: block;
+        width: 90%;
+      }
+      .right_block button{
+        display: block;
+        width: 80%;
+        height: 35px;
+        font-size: 17px;
+        color: white;
+        background: blue;
+        margin: 10px auto;
+        border-radius: 10px;
+        border: 0;
+      }
+      .rb_left{
+        width: 40%;
+        float: left;
+      }
+      .rb_left > *{
+        float: right;
+        margin-right: 20px;
+      }
+      .rb_right{
+        width: 60%;
+        float: right;
+        margin-bottom: 10px;
+      }
+      .block img{
+        display: block;
+      }
+      .pic_block{
+        margin: 0 400px 20px 0;
+      }
+      .pic_block > img{
+        width: 100px;
+        margin-left: 20px;
+      }
+      footer{
+        width: 100%;
+        height: 70px;
+        background: black;
+        line-height: 70px;
+        text-align: center;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>百度</h1>
+      <nav>
+        <ul>
+          <li>导航链接1</li>
+          <li>导航链接2</li>
+          <li>导航链接3</li>
+          <li>导航链接4</li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="right_block">
+      <div class="rb_left">
+        <label for="email">请输入邮箱:</label>
+        <br>
+        <label for="password">请输入密码:</label>
+        <br>
+        <label for="">性别</label>
+        <br>
+        <label for="">城市</label>
+        <br>
+        <label for="">你使用哪门语言</label>
+        <br>
+        <label for="">个人简介</label>
+      </div>
+      <div class="rb_right">
+        <input type="text" name="" value="" id="email">
+        <br>
+        <input type="password" name="" value="" id="password">
+        <br />
+         男: <input type="radio" name="sex" value="">  女: <input type="radio" name="" value="">
+        <br>
+        <select class="" name="">
+          <option value="">北京</option>
+          <option value="">上海</option>
+          <option value="">深圳</option>
+        </select>
+        <br />
+        java<input type="checkbox" name="" value="">
+        php<input type="checkbox" name="" value="">
+        javascript<input type="checkbox" name="" value="">
+        <br />
+        <textarea name="name" rows="8" cols="80">阿斯顿</textarea>
+      </div>
+
+
+
+      <button type="button" name="button">确认提交</button>
+    </div>
+
+    <div class="block">
+      <h3>文章一级标题</h3>
+      <h3>文章二级标题</h3>
+      <p>文章作者 发表时间</p>
+      <p>很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长
+        <a href="http://ife.baidu.com">百度ife</a>
+        很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长
+        <img src="img/h5.jpg" alt="h5">
+        很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长
+        很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长
+        很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长
+        很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长
+        很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长
+      </p>
+
+
+    </div>
+
+    <div class="pic_block">
+      <img src="img/h5.jpg" alt="h5" title="h5">
+      <img src="img/h5.jpg" alt="h5" title="h5">
+      <img src="img/h5.jpg" alt="h5" title="h5">
+      <img src="img/h5.jpg" alt="h5" title="h5">
+      <img src="img/h5.jpg" alt="h5" title="h5">
+      <img src="img/h5.jpg" alt="h5" title="h5">
+      <img src="img/h5.jpg" alt="h5" title="h5">
+      <img src="img/h5.jpg" alt="h5" title="h5">
+      <img src="img/h5.jpg" alt="h5" title="h5">
+      <img src="img/h5.jpg" alt="h5" title="h5">
+
+    </div>
+
+
+
+
+    <div class="block">
+      <ol>
+        <li>排名1</li>
+        <li>排名2</li>
+        <li>排名3</li>
+      </ol>
+      <dl>
+        <dt>标题</dt>
+        <dd>内容</dd>
+      </dl>
+      <table>
+        <thead>
+          <tr>
+            <th>表格头部</th><th>asd</th><th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>表格身体</td><td>asd</td><td><a href="#">删除</a></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>表格底部</td><td>asd</td><td><a href="#">删除</a></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+
+
+
+    <footer>版权所有</footer>
+  </body>
+</html>
