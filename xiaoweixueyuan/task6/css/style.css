@@ -1,0 +1,304 @@
+html, body{
+  margin: 0;
+  padding: 0;
+  font-family: "microsoft yahei";
+  font-size: 16px;
+}
+
+a{
+  text-decoration: none;
+}
+
+li{
+  list-style: none;
+}
+
+.all{
+  background: #5D5D5D;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.newspaper{
+  width: 980px;
+  height: 1386px;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background: white;
+  padding: 0 44px;
+  box-sizing: border-box;
+}
+
+
+/*header*/
+.header{
+  width: 100%;
+  height: 61px;
+  border-bottom: 2px solid #938E8C;
+  font-family: "SimHei";
+}
+
+.h-left{
+  width: 110px;
+  height: 61px;
+  background: #D45D5C;
+  padding-top: 35px;
+  padding-left: 5px;
+  box-sizing: border-box;
+  float: left;
+}
+.h-left a{
+    font-size: 12px;
+    color: #ffffff;
+    font-family: "SimHei";
+}
+
+.h-right{
+  float: right;
+  color: #d45d5c;
+  padding-top: 40px;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+
+
+/*pic*/
+.pic{
+  width: 100%;
+  margin-top: 34px;
+  overflow: auto;
+}
+
+.p-left{
+  background: url(../img/zsdt.jpg) no-repeat center;
+  width: 641px;
+  height: 301px;
+  float: left;
+}
+.p-left > img{
+  opacity: 0.5;
+}
+.p-left > img:first-child{
+  float: left;
+}
+.p-left > img:last-child{
+  float: right;
+}
+
+
+
+.p-right{
+  float: right;
+  width: 203px;
+  border-top: 2px solid #cc8091;
+}
+.pr-title{
+  font-size: 24px;
+  color: #000000;
+  line-height: 40px;
+  font-variant: small-caps;
+  text-decoration: underline;
+  margin-top: 5px;
+}
+.p-right > p{
+  color: #676767;
+  font-size: 12px;
+  font-family: "KaiTi";
+  line-height: 10px;
+}
+.pr-num{
+  font-size: 116px;
+  color: #75b86b;
+  font-style: oblique;;
+  text-indent: -17px;
+  margin-top: -20px;
+}
+.pr-num2{
+  color: #cc8091;
+  overflow: auto;
+  margin-top: -30px;
+}
+.pr-num2 > div:first-child{
+  font-size: 55px;
+  float: left;
+}
+.pr-num2 > div:last-child{
+  float: left;
+  margin-top:18px;
+  margin-left: 5px;
+}
+.pr-num2 > div:last-child > div:first-child{
+  font-size: 21px;
+}
+.pr-num2 > div:last-child > div:last-child{
+  font-size: 12px;
+}
+
+
+/*word*/
+.word{
+  width: 100%;
+  margin-top: 40px;
+  overflow: auto;
+}
+
+.w-block{
+  width: 228px;
+  float: left;
+  margin-left: 28px;
+}
+.wb-title{
+  font-weight: 600;
+  text-decoration: underline;
+  margin-bottom: 9px;
+}
+.w-block:first-child{
+  margin-left: 0;
+}
+.w-block:first-child > .wb-title{
+  color: #418C59;
+}
+.w-block:nth-child(2) > .wb-title{
+  color: #D2994F;
+}
+.wb-content{
+  font-size: 12px;
+  color: #231815;
+  line-height: 16px;
+  opacity: 0.7;
+}
+.w-block:last-child{
+  margin-top: 30px;
+}
+.w-block:last-child .wb-percent{
+  line-height: 16px;
+  margin-top: 28px;
+}
+.w-block:last-child span{
+  color: #cd4a48;
+  font-size: 12px;
+  font-style: italic;
+}
+
+
+
+
+/*content*/
+.content{
+  width: 100%;
+  overflow: hidden;
+  margin-top: 50px;
+}
+
+.c-left{
+  width: 415px;
+  float: left;
+
+}
+.cl-title{
+  font-family: "SimHei";
+  font-weight: 600;
+  border-bottom: 2px solid #10456B;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.cl-title > span:first-child{
+  font-size: 72px;
+  color: #f5e327;
+  font-style: italic;
+  margin-right: 18px;
+}
+.cl-title > span:nth-child(2){
+  font-size: 42px;
+  color: #11456b;
+  line-height: 16px;
+}
+.cl-title > div{
+  margin: 16px 0;
+  font-size: 33px;
+  color: #11456b;
+}
+.cl-content{
+  font-size: 12px;
+  color: #767777;
+  line-height: 16px;
+  font-family: "SimSun";
+}
+.cl-content > span:first-child{
+  font-size: 70px;
+  color: #f5e327;
+  float: left;
+  line-height: 70px;
+  margin-right: 10px;
+  font-family: "microsoft yahei";
+}
+.cl-content > img{
+  float: right;
+  margin: 25px;
+  margin-right: 0;
+}
+
+
+
+
+
+.c-right{
+  width: 458px;
+  float: right;
+}
+.cr-top{
+  width: 458px;
+  height: 275px;
+  position: relative;
+}
+.cr-top > img{
+  width: 100%;
+  height: 100%;
+}
+
+.crt-title{
+  width: 100%;
+  height: 61px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.crtt-shadow{
+  background: black;
+  opacity: 0.3;
+  width: 100%;
+  height: 100%;
+}
+.crtt-line{
+  width: 3px;
+  height: 44px;
+  background: #72b16a;
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  left: 38px;
+}
+.crtt-word1{
+  position: absolute;
+  z-index: 1;
+  left: 53px;
+  top: 11px;
+  font-size: 26px;
+  color: #ffffff;
+}
+.crtt-word2{
+  position: absolute;
+  z-index: 1;
+  left: 165px;
+  top: 26px;
+  font-size: 12px;
+  color: #72b16a;
+  font-style: italic;
+  letter-spacing: 2px;
+}
