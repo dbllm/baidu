@@ -29,7 +29,9 @@
     <button class="left_opt">左侧出</button>
     <button class="right_opt">右侧出</button>
     <script type="text/javascript">
+      // 定义全局变量list用于存储队列，获取ul和button
       var list = [], ul = document.querySelector(".queue"), buttons = document.querySelectorAll("button");
+      // 定义更新数据函数，一开始和每次点击button后都会调用
       function update(){
         ul.innerHTML = "";
 
@@ -40,7 +42,7 @@
         }
       }
 
-
+      // 队列函数，根据点击的button决定数字应该是 左侧入 右侧入 左侧出 右侧出 这四项其中的一种
       function queue(calc, num){
         console.log(num);
         if(calc == "left_ipt"){
@@ -59,7 +61,7 @@
         update();
       }
 
-
+      // 初始化
       function init(){
         update();
 
