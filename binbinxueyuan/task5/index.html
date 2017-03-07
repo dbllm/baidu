@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>斌斌学院-任务五</title>
+    <style media="screen">
+      ul{
+        height: 130px;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap-reverse;
+      }
+      li{
+        width: 30px;
+        color: white;
+        background: black;
+        float: left;
+        list-style: none;
+        margin: 0 5px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="sort">
+      <!-- 放置柱状图 -->
+    </ul>
+    <br>
+    <input type="number" name="" value="" max="100" min="10" class="ipt">
+    <button class="left_ipt">左侧入</button>
+    <button class="right_ipt">右侧入</button>
+    <button class="left_opt">左侧出</button>
+    <button class="right_opt">右侧出</button>
+    <button class="action">开始排序</button>
+    <script type="text/javascript">
+      // 定义list以及需要的变量 获取ul
+      var list = [], ul = document.querySelector(".sort"), timer, idx1 = 0, idx2 = 0, temp, ok = true;
+
+
+      // 负责把更新后的数组list显示在页面上
+      function update(){
+        ul.innerHTML = "";
+        for (let i = 0, j = list.length; i < j; i++) {
+          var li = document.createElement("li");
+          li.style.height = list[i] + 30 + "px";
+          li.innerHTML = list[i];
+          ul.appendChild(li);
+        }
+      }
+
+      // 主函数  用setInterval来实现动画已经循环
+      function main(){
+        timer = setInterval(function(){
+
+
+          if(idx2 >= list.length){
+            idx2 = 0;
+            idx1++;
+            if(idx1 >= list.length){
+              clearInterval(timer);
+              ok = false;
+            }
+          }
+
+          while (list[idx1] > list[idx2]) {
+            idx2++;
+            if(idx2 == idx1){
+              idx2++;
+              continue;
+            }
+            if(idx2 >= list.length){
+              idx2 = 0;
+              idx1++;
+              if(idx1 >= list.length){
+                clearInterval(timer);
+                ok = false;
+                break;
+              }
+            }
+          }
+          if(ok){
+            temp = list[idx1];
+            list[idx1] = list[idx2];
+            list[idx2] = temp;
+            idx2++;
+            // if(list[idx1] < list[idx2]){
+            //   temp = list[idx1];
+            //   list[idx1] = list[idx2];
+            //   list[idx2] = temp;
+            // }
+            // idx2++;
+            console.log(idx1, idx2);
+            update();
+          }
+
+
+
+        },500);
+      }
+
+
+
+      function queue(calc, num){
+        if(calc == "left_ipt"){
+          list.unshift(num);
+        }else if(calc == "right_ipt"){
+          list.push(num);
+        }else if(calc == "left_opt"){
+          list.shift();
+        }else if(calc == "right_opt"){
+          list.pop();
+        }
+        update();
+      }
+
+
+      // 绑定按钮点击事件
+      function btnHandle(){
+        var btns = document.querySelectorAll("button");
+        for (let i = 0,j = btns.length; i < j; i++) {
+          btns[i].addEventListener("click",function(){
+            var num = document.querySelector(".ipt"), judge1 = num.value >= 10 && num.value <= 100, judge2 = this.className == "right_ipt" || this.className == "left_ipt";
+            if(!judge1 && judge2){
+              alert("请输入10到100之内的数字（包含10和100）");
+            }else{
+              queue(this.className, parseInt(num.value));
+            }
+
+          });
+        }
+      }
+
+
+      // 初始化
+      function init(){
+        document.querySelector(".action").addEventListener("click",function(){
+          main();
+        });
+        btnHandle();
+      }
+
+
+      init();
+    </script>
+  </body>
+</html>
