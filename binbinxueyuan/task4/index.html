@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>斌斌学院-任务四</title>
+    <style media="screen">
+      li{
+        list-style: none;
+        float: left;
+        padding: 0 5px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        background: red;
+        color: white;
+        margin: 0 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="queue">
+      <!-- 存放队列 -->
+    </ul>
+    <br>
+    <!-- 输入数字  input输入类型是number，既只能输入数字 -->
+    <input type="number" name="" value="" class="ipt">
+    <button class="left_ipt">左侧入</button>
+    <button class="right_ipt">右侧入</button>
+    <button class="left_opt">左侧出</button>
+    <button class="right_opt">右侧出</button>
+    <script type="text/javascript">
+      var list = [], ul = document.querySelector(".queue"), buttons = document.querySelectorAll("button");
+      function update(){
+        ul.innerHTML = "";
+
+        for (var i = 0, j = list.length; i < j; i++ ) {
+          var li = document.createElement("li");
+          li.innerHTML = list[i];
+          ul.appendChild(li);
+        }
+      }
+
+
+      function queue(calc, num){
+        console.log(num);
+        if(calc == "left_ipt"){
+          list.unshift(num);
+        }else if(calc == "right_ipt"){
+          list.push(num);
+        }else if(calc == "left_opt"){
+          list.shift();
+        }else{
+          list.pop();
+        }
+      }
+
+      function btnHandle(calc ,num){
+        queue(calc ,num);
+        update();
+      }
+
+
+      function init(){
+        update();
+
+        for (var i = 0, j = buttons.length; i < j; i++) {
+          buttons[i].addEventListener("click",function(){
+            var num = document.querySelector(".ipt");
+            btnHandle(this.className, num.value);
+          });
+        }
+
+
+      }
+
+      init();
+    </script>
+  </body>
+</html>
