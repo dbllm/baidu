@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>斌斌学院-任务七</title>
+    <style media="screen">
+      div{
+        border: 5px solid black;
+        box-sizing: border-box;
+        background: white;
+      }
+      .a{
+        width: 100%;
+        display: flex;
+        height: 500px;
+        position: relative;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .a > div{
+        width: 45%;
+        height: 400px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .a > div > div{
+        width: 40%;
+        height: 300px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .a > div > div > div{
+        width: 35%;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="a">
+      <div class="b">
+        <div class="d">
+          <div class="h"></div>
+          <div class="i"></div>
+        </div>
+        <div class="e">
+          <div class="j"></div>
+        </div>
+      </div>
+      <div class="c">
+        <div class="f">
+          <div class="k"></div>
+        </div>
+        <div class="g"></div>
+      </div>
+    </div>
+
+    <br><br><br><br>
+    <button class="preorder">前序遍历</button>
+    <button class="inorder">中序遍历</button>
+    <button class="postorder">后序遍历</button>
+    <script type="text/javascript">
+      var a = document.querySelector(".a"), pre_list = [], in_list = [], post_list = [], div = document.querySelectorAll("div");
+
+
+      // 前序遍历
+      function preorder(node){
+        if(node){
+          var len = node.children.length;
+          pre_list.push(node.className);
+          if(len > 1){
+            preorder(node.children[0]);
+            preorder(node.children[len-1]);
+          }else{
+            preorder(node.children[0]);
+          }
+        }
+      }
+
+      // 中序遍历
+      function inorder(node){
+        if(node){
+          var len = node.children.length;
+          inorder(node.children[0]);
+          in_list.push(node.className);
+          if(len > 1){
+            inorder(node.children[len-1]);
+          }else{
+          }
+        }
+      }
+
+      // 后序遍历
+      function postorder(node){
+        if(node){
+          var len = node.children.length;
+          postorder(node.children[0]);
+          if(len > 1){
+            postorder(node.children[len-1]);
+          }else{
+          }
+          post_list.push(node.className);
+        }
+      }
+
+
+
+      function anima(order_list){
+        var i = 0,order_len = order_list.length;
+        var timer = setInterval(function(){
+          if(i < order_len){
+            for (let idx = 0, j = div.length; idx < j; idx++) {
+              if(order_list[i] == div[idx].className){
+                div[idx].style.background = "black";
+              }else{
+                div[idx].style.background = "white";
+              }
+            }
+          }else{
+            clearInterval(timer);
+            for (let idx = 0, j = div.length; idx < j; idx++) {
+              div[idx].style.background = "white";
+            }
+          }
+          i++;
+        },500);
+      }
+
+
+      // 初始化，绑定按钮点击事件
+      function init(){
+        document.querySelector(".preorder").addEventListener("click",function(){
+          preorder(a);
+          anima(pre_list);
+
+        });
+
+
+        document.querySelector(".inorder").addEventListener("click",function(){
+          inorder(a);
+
+          anima(in_list);
+        });
+
+
+
+        document.querySelector(".postorder").addEventListener("click",function(){
+          postorder(a);
+          anima(post_list);
+        });
+
+
+      }
+
+      init();
+
+    </script>
+  </body>
+</html>
