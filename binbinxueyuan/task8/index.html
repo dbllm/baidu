@@ -97,19 +97,23 @@
       <div class="d">d</div>
     </div>
     <br><br><br><br>
-    <button class="preorder">前序遍历</button>
+    <button class="dfs">深度优先遍历</button>
+    <button class="bfs">广度优先遍历</button>
     <script type="text/javascript">
-      var a = document.querySelector(".a"), pre_list = [], div = document.querySelectorAll("div");
+      var a = document.querySelector(".a"), dfs_list = [], bfs_list = [], bfs_queue = [], div = document.querySelectorAll("div");
 
-      function preorder(node){
+
+      // 深度优先遍历  多叉树
+      function dfs(node){
         if(node){
           var len = node.children.length;
-          pre_list.push(node.className);
+          dfs_list.push(node.className);
           if(len > 1){
-            preorder(node.children[0]);
-            preorder(node.children[len-1]);
+            for (let i = 0; i < len; i++) {
+              dfs(node.children[i]);
+            }
           }else{
-            preorder(node.children[0]);
+            dfs(node.children[0]);
           }
         }
       }
@@ -117,6 +121,30 @@
 
 
 
+      // 广度优先遍历  多叉树
+      function bfs(bfs_queue){
+        var len = bfs_queue.length;
+        if(len){
+          for (let i = 0; i < len; i++) {
+            if(!bfs_queue[0]){
+              return ;
+            }
+            bfs_list.push(bfs_queue[i].className);
+            if(bfs_queue[i].children.length > 0){
+              for (let j = 0; j < bfs_queue[i].children.length; j++) {
+                bfs_queue.push(bfs_queue[i].children[j]);
+              }
+            }
+            bfs_queue.shift();
+            bfs(bfs_queue);
+          }
+        }
+      }
+
+
+
+
+      // 动画效果
       function anima(order_list){
         var i = 0,order_len = order_list.length;
         var timer = setInterval(function(){
@@ -124,15 +152,21 @@
             for (let idx = 0, j = div.length; idx < j; idx++) {
               if(order_list[i] == div[idx].className){
                 div[idx].style.background = "black";
+                div[idx].style.color = "white";
               }else{
                 div[idx].style.background = "white";
+                div[idx].style.color = "black";
               }
             }
           }else{
             clearInterval(timer);
             for (let idx = 0, j = div.length; idx < j; idx++) {
               div[idx].style.background = "white";
+              div[idx].style.color = "black";
             }
+            dfs_list = [];
+            bfs_list = [];
+            bfs_queue = [];
           }
           i++;
         },500);
@@ -141,8 +175,18 @@
 
 
 
-
+      // 初始化绑定点击事件
       function init(){
+        document.querySelector(".dfs").addEventListener("click",function(){
+          dfs(a);
+          anima(dfs_list);
+        });
+
+        document.querySelector(".bfs").addEventListener("click",function(){
+          bfs_queue.push(a);
+          bfs(bfs_queue);
+          anima(bfs_list);
+        });
 
       }
       init();
