@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>斌斌学院-任务九</title>
+    <style media="screen">
+      div{
+        border: 5px solid black;
+        box-sizing: border-box;
+        background: white;
+        flex: 1;
+        color: black;
+      }
+      .a{
+        width: 100%;
+        display: flex;
+        height: 700px;
+        position: relative;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .a div{
+        margin: 0 10px;
+      }
+      .a > div{
+        height: 600px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .a > div > div{
+        height: 500px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .a > div > div > div{
+        height: 400px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .a > div > div > div > div{
+        height: 300px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .a > div > div > div > div > div{
+        height: 200px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .a > div > div > div > div > div > div{
+        height: 100px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="a">a
+      <div class="b">b
+        <div class="e">e
+          <div class="j">j</div>
+          <div class="k">k</div>
+          <div class="l">i</div>
+          <div class="m">m</div>
+        </div>
+        <div class="f">f</div>
+        <div class="g">g
+          <div class="n">n</div>
+          <div class="o">o</div>
+        </div>
+      </div>
+      <div class="c">c
+        <div class="h">h
+          <div class="p">p</div>
+          <div class="q">q</div>
+          <div class="r">r</div>
+        </div>
+        <div class="i">i
+          <div class="s">s</div>
+          <div class="t">t
+            <div class="u">u</div>
+          </div>
+        </div>
+      </div>
+      <div class="d">d</div>
+    </div>
+    <br><br><br>
+    <button class="delete">删除</button>
+    <input type="text" name="" value="" class="ipt">
+    <button class="add">添加</button>
+    <script type="text/javascript">
+      var mark;
+
+    // 绑定页面元素点击事件
+    function div_click(){
+      var div = document.querySelectorAll("div");
+      for (let i = 0, j = div.length; i < j; i++) {
+        div[i].addEventListener("click",function(){
+          mark = this;
+          for (let i = 0, j = div.length; i < j; i++) {
+            if(div[i] == mark){
+              div[i].style.background = "black";
+              div[i].style.color = "white";
+            }else{
+              div[i].style.background = "white";
+              div[i].style.color = "black";
+            }
+          }
+        }, true);
+      }
+    }
+
+
+
+      // 初始化，绑定按钮点击事件
+      function init(){
+        div_click();
+
+
+
+        document.querySelector(".delete").addEventListener("click",function(){
+           mark.parentNode.removeChild(mark);
+           div_click();
+        });
+
+
+        document.querySelector(".add").addEventListener("click",function(){
+          var ipt = document.querySelector(".ipt");
+          var div_child = document.createElement("div");
+          div_child.innerHTML = ipt.value;
+          mark.appendChild(div_child);
+          div_click();
+        }, true);
+
+
+
+      }
+      init();
+    </script>
+  </body>
+</html>
