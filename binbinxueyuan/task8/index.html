@@ -99,8 +99,11 @@
     <br><br><br><br>
     <button class="dfs">深度优先遍历</button>
     <button class="bfs">广度优先遍历</button>
+    <br><br><br><br>
+    <input type="text" name="" value="" class="ipt" > <button class="query">查询</button>
+    <br>(在输入框输入查询的内容，点击查询之后，再去点击遍历方式的button选择何种遍历方式)
     <script type="text/javascript">
-      var a = document.querySelector(".a"), dfs_list = [], bfs_list = [], bfs_queue = [], div = document.querySelectorAll("div");
+      var a = document.querySelector(".a"), dfs_list = [], bfs_list = [], bfs_queue = [], div = document.querySelectorAll("div"), query = "", pd = false;
 
 
       // 深度优先遍历  多叉树
@@ -153,9 +156,15 @@
               if(order_list[i] == div[idx].className){
                 div[idx].style.background = "black";
                 div[idx].style.color = "white";
+                if(div[idx].className == query){
+                  pd = true;
+                }
               }else{
                 div[idx].style.background = "white";
                 div[idx].style.color = "black";
+              }
+              if(div[idx].className == query && pd){
+                query_light(idx);
               }
             }
           }else{
@@ -163,6 +172,10 @@
             for (let idx = 0, j = div.length; idx < j; idx++) {
               div[idx].style.background = "white";
               div[idx].style.color = "black";
+              if(div[idx].className == query && pd){
+                query_light(idx);
+                pd = false;
+              }
             }
             dfs_list = [];
             bfs_list = [];
@@ -173,6 +186,11 @@
       }
 
 
+      // 让查询到的节点与众不同
+      function query_light(i){
+        div[i].style.background = "green";
+        div[i].style.color = "blue";
+      }
 
 
       // 初始化绑定点击事件
@@ -186,6 +204,11 @@
           bfs_queue.push(a);
           bfs(bfs_queue);
           anima(bfs_list);
+        });
+
+
+        document.querySelector(".query").addEventListener("click",function(){
+          query = document.querySelector(".ipt").value;
         });
 
       }
