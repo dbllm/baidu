@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>耀耀学院-任务二</title>
+    <style media="screen">
+      html, body{
+        margin: 0;
+        padding: 0;
+        font-family: "microsoft yahei";
+        font-size: 16px;
+      }
+      .all{
+        width: 700px;
+        height: 500px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        font-weight: 600;
+      }
+      .block{
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+      }
+      .block > label{
+        display: block;
+        float: left;
+        width: 70px;
+        text-align: right;
+      }
+      .block > input{
+        width: 60%;
+        height: 35px;
+        margin-right: 150px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        outline:none;
+        font-size: 16px;
+        float: right;
+      }
+      .block > input:focus{
+        border: 2px solid #64AEEF;
+        box-shadow: 1px 1px 5px 2px #cccccc;
+      }
+      .block:not(:first-child){
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="all">
+      <div class="block">
+        <label for="name">名称</label>
+        <input type="text" name="" value="" id="name">
+      </div>
+      <div class="block">
+        <label for="password">密码</label>
+        <input type="text" name="" value="" id="password">
+      </div>
+      <div class="block">
+        <label for="password2">密码确认</label>
+        <input type="text" name="" value="" id="password2">
+      </div>
+      <div class="block">
+        <label for="email">邮箱</label>
+        <input type="text" name="" value="" id="email">
+      </div>
+      <div class="block">
+        <label for="phone">手机</label>
+        <input type="text" name="" value="" id="phone">
+      </div>
+    </div>
+    <script type="text/javascript">
+      var ipt = document.querySelectorAll("input");
+
+    </script>
+  </body>
+</html>
