@@ -38,13 +38,20 @@
           }
         }
         var n = ipt.value.length + num;
-        if(n >= 4 && n <= 16){
-          alert("字符个数为: " + n + " ，合格");
+        var regexp = new RegExp(/\s/,"g");
+        if(regexp.test(ipt.value)){
+          alert("不能为空或者字符里带空格，格式错了！");
+          regexp.lastIndex = 0;
         }else{
-          alert("字符个数为: " + n + " ，不合格");
+          if(n >= 4 && n <= 16){
+            alert("字符个数为: " + n + " ，合格");
+          }else{
+            alert("字符个数为: " + n + " ，不合格");
+          }
         }
 
 
+        console.log();
 
       });
     </script>
