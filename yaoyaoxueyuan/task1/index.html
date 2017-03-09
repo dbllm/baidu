@@ -33,7 +33,7 @@
         var first = parseInt("4E00", 16), last = parseInt("9FA5", 16), num = 0;
         for (let i = 0, j = array.length; i < j; i++) {
           // 如果是汉字 计数加一
-          if(array[i].charCodeAt(0) >= first && array[i].charCodeAt(0) <= last){
+          if(array[i].charCodeAt(0) >= 0x4E00 && array[i].charCodeAt(0) <= 0x9FA5){
             num ++;
           }
         }
@@ -51,9 +51,10 @@
         }
 
 
-        console.log();
 
+        console.log(0x4E00, first);
       });
+
     </script>
   </body>
 </html>
