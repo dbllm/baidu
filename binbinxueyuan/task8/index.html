@@ -103,7 +103,7 @@
     <input type="text" name="" value="" class="ipt" > <button class="query">查询</button>
     <br>(在输入框输入查询的内容，点击查询之后，再去点击遍历方式的button选择何种遍历方式)
     <script type="text/javascript">
-      var a = document.querySelector(".a"), dfs_list = [], bfs_list = [], bfs_queue = [], div = document.querySelectorAll("div"), query = "", pd = false;
+      var a = document.querySelector(".a"), dfs_list = [], bfs_list = [], bfs_queue = [], div = document.querySelectorAll("div"), query = "", pd = false, find = false;
 
 
       // 深度优先遍历  多叉树
@@ -158,6 +158,7 @@
                 div[idx].style.color = "white";
                 if(div[idx].className == query){
                   pd = true;
+                  find = true;
                 }
               }else{
                 div[idx].style.background = "white";
@@ -180,6 +181,10 @@
             dfs_list = [];
             bfs_list = [];
             bfs_queue = [];
+            if(!find){
+              alert("提示:找不到");
+            }
+            find = false;
           }
           i++;
         },500);
