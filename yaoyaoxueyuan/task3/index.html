@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>耀耀学院-任务三</title>
+    <style media="screen">
+      .box{
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+      }
+      select{
+        margin-left:50px;
+      }
+      .content{
+        display: none;
+        position: absolute;
+        top: 40px;
+        left: 0px;
+      }
+      .test:checked + .content{
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="chioice">
+        <input type="radio" name="id" value="" id="stu" checked class="test">
+        <div class="content content1">
+          学校
+          <select name="" id="area">
+          </select>
+          <select name="" id="school">
+          </select>
+        </div>
+        <label for="stu">在校生</label>
+        <input type="radio" name="id" value="" id="notstu" class="test">
+        <div class="content content2">
+          就业单位 &nbsp;&nbsp;&nbsp; <input type="text" name="" value="">
+        </div>
+         <label for="notstu">非在校生</label>
+      </div>
+
+
+    </div>
+    <script type="text/javascript">
+      var list = ["北京", "长沙", "四川"], list2 = [["北京大学", "清华大学"], ["湖南大学","中南大学"], ["西南民大","四川大学"]], idx = 0;
+      var area = document.querySelector("#area"), school = document.querySelector("#school");
+
+
+
+    // 更新学校
+    function school_update(idx){
+      school.innerHTML = "";
+      for (let i = 0, j = list2[idx].length; i < j; i++) {
+        var option = document.createElement("option");
+        option.value = i;
+        option.innerHTML = list2[idx][i];
+        school.appendChild(option);
+      }
+    }
+
+
+      // 初始化  绑定区域更换事件
+      function init(){
+        for (let i = 0, j = list.length; i < j; i++) {
+          var option = document.createElement("option");
+          option.value = i;
+          option.innerHTML = list[i];
+          area.appendChild(option);
+        }
+        school_update(idx);
+
+        area.addEventListener("change",function(){
+          idx = this.value;
+          school_update(idx);
+        });
+
+      }
+      init();
+    </script>
+  </body>
+</html>
