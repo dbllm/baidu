@@ -229,7 +229,7 @@
 
 
 
-
+      // 定位, 确定方块在何位置
       function location(){
         for (let i = 0, j = td.length; i < j; i++) {
           td[i].innerHTML = "";
@@ -237,7 +237,7 @@
         tr[zb[0]].querySelectorAll("td")[zb[1]].appendChild(block);
       }
 
-
+      // 移动，当GO命令时调用
       function move(){
         if(fx == "down"){
           zb[0]++;
@@ -268,7 +268,7 @@
       }
 
 
-
+      // 动画效果，显示方块的方向变化
       function anima(){
         if(fx == "down"){
           block.style.transform = "rotate(0deg)";
@@ -281,7 +281,7 @@
         }
       }
 
-
+      初始化，绑定按钮点击事件
       function init(){
         block.className = "block";
         block.appendChild(document.createElement("div"));
