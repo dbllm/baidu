@@ -2,9 +2,472 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>耀耀学院-任务五</title>
+    <style media="screen">
+      .grid{
+        width: 500px;
+        height: 500px;
+        margin: 100px auto;
+        position: relative;
+      }
+      table{
+        width: 500px;
+        height: 500px;
+        border: 1px solid #141414;
+      }
+      td{
+        border: 1px solid #E6E6E6;
+      }
+      .row{
+        position: absolute;
+        top: -50px;
+        left: 0;
+        padding: 0 0 0 20px;
+      }
+      .row li{
+        list-style: none;
+        float: left;
+      }
+      .row li:not(:first-child){
+        margin-left: 40px;
+      }
+      .col{
+        position: absolute;
+        top: 0;
+        padding: 0;
+        left: -40px;
+      }
+      .col li{
+        list-style: none;
+      }
+      .col li:not(:first-child){
+        margin-top: 29px;
+      }
+      td{
+        position: relative;
+      }
+      .block{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: 1s;
+      }
+      .block > div:last-child{
+        width: 100%;
+        height: 20%;
+        background: #0101FF;
+      }
+      .block > div:first-child{
+        width: 100%;
+        height: 80%;
+        background: #FE0000;
+      }
+    </style>
   </head>
   <body>
+    <div class="grid">
+      <ul class="row">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+      </ul>
+      <ul class="col">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+      </ul>
+      <table cellspacing="0">
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+      <br>
+      <input type="text" name="" value="">
+      <button>GO</button>
+      <br>
+      GO：向蓝色边所面向的方向前进一格（一格等同于正方形的边长）<br>
+      TUN LEF：向左转（逆时针旋转90度）<br>
+      TUN RIG：向右转（顺时针旋转90度）<br>
+      TUN BAC：向右转（旋转180度）<br>
+      TRA LEF：向屏幕的左侧移动一格，方向不变 <br>
+      TRA TOP：向屏幕的上面移动一格，方向不变 <br>
+      TRA RIG：向屏幕的右侧移动一格，方向不变 <br>
+      TRA BOT：向屏幕的下面移动一格，方向不变 <br>
+      MOV LEF：方向转向屏幕左侧，并向屏幕的左侧移动一格 <br>
+      MOV TOP：方向转向屏幕上面，向屏幕的上面移动一格 <br>
+      MOV RIG：方向转向屏幕右侧，向屏幕的右侧移动一格 <br>
+      MOV BOT：方向转向屏幕下面，向屏幕的下面移动一格
+    </div>
+    <script type="text/javascript">
 
+      var block = document.createElement("div"), fx = "down", zb = [0,0],tr = document.querySelectorAll("tr"), td = document.querySelectorAll("td"),
+        ipt = document.querySelector("input");
+
+
+
+      // 定位, 确定方块在何位置
+      function location(){
+          block.style.top = "0px";
+          block.style.left = "0px";
+        for (let i = 0, j = td.length; i < j; i++) {
+          td[i].innerHTML = "";
+        }
+        tr[zb[0]].querySelectorAll("td")[zb[1]].appendChild(block);
+      }
+
+      // 移动，当GO命令时调用
+      function move(loca){
+        var zq = true, loca = loca || fx;
+        if(loca == "down"){
+          zb[0]++;
+          if(zb[0] > 9){
+            alert("撞墙了");
+            zq = false;
+            zb[0]--;
+          }
+        }else if(loca == "left"){
+          zb[1]--;
+          if(zb[1] < 0){
+            alert("撞墙了");
+            zq = false;
+            zb[1]++;
+          }
+        }else if(loca == "right"){
+          zb[1]++;
+          if(zb[1] > 9){
+            alert("撞墙了");
+            zq = false;
+            zb[1]--;
+          }
+        }else if(loca == "up"){
+          zb[0]--;
+          if(zb[0] < 0){
+            alert("撞墙了");
+            zq = false;
+            zb[0]++;
+          }
+        }
+        if(zq){
+          forward_anima(loca);
+          setTimeout(function(){
+            location();
+          },1000);
+        }
+
+
+      }
+
+
+
+
+      // function move2(loca){
+      //   var zq = true;
+      //   if(loca == "down"){
+      //     zb[0]++;
+      //     if(zb[0] > 9){
+      //       alert("撞墙了");
+      //       zb[0]--;
+      //     }
+      //   }else if(loca == "left"){
+      //     zb[1]--;
+      //     if(zb[1] < 0){
+      //       alert("撞墙了");
+      //       zb[1]++;
+      //     }
+      //   }else if(loca == "right"){
+      //     zb[1]++;
+      //     if(zb[1] > 9){
+      //       alert("撞墙了");
+      //       zb[1]--;
+      //     }
+      //   }else if(loca == "up"){
+      //     zb[0]--;
+      //     if(zb[0] < 0){
+      //       alert("撞墙了");
+      //       zb[0]++;
+      //     }
+      //   }
+      //
+      //   forward_anima();
+      //   setTimeout(function(){
+      //     location();
+      //   },1000);
+      // }
+
+
+
+
+      // 前进动画
+      function forward_anima(fw_fx){
+        var fw_fx = fw_fx || fx;
+        if(fw_fx == "down"){
+          // block.style.transform = "translate(0px,50px)";
+          block.style.top = "50px";
+        }else if(fw_fx == "left"){
+          // block.style.transform = "translate(-50px,0px)";
+          block.style.left = "-50px";
+        }else if(fw_fx == "right"){
+          // block.style.transform = "translate(50px,00px)";
+          block.style.left = "50px";
+        }else if(fw_fx == "up"){
+          // block.style.transform = "translate(0px,-50px)";
+          block.style.top = "-50px";
+        }
+      }
+
+
+
+
+
+      // 动画效果，显示方块的方向变化
+      function anima(){
+        if(fx == "down"){
+          block.style.transform = "rotate(0deg)";
+        }else if(fx == "left"){
+          block.style.transform = "rotate(90deg)";
+        }else if(fx == "right"){
+          block.style.transform = "rotate(-90deg)";
+        }else if( fx == "up"){
+          block.style.transform = "rotate(180deg)";
+        }
+      }
+
+      // 初始化，绑定按钮点击事件
+      function init(){
+        block.className = "block";
+        block.appendChild(document.createElement("div"));
+        block.appendChild(document.createElement("div"));
+
+        location();
+
+
+        document.querySelector("button").addEventListener("click",function(){
+          if(ipt.value == "tun lef" || ipt.value == "TUN LEF"){
+            if(fx == "down"){
+              fx = "right";
+            }else if(fx == "left"){
+              fx = "down";
+            }else if(fx == "right"){
+              fx = "up";
+            }else if( fx == "up"){
+              fx = "left";
+            }
+            anima();
+          }else if (ipt.value == "TUN RIG" || ipt.value == "tun rig") {
+            if(fx == "down"){
+              fx = "left";
+            }else if(fx == "left"){
+              fx = "up";
+            }else if(fx == "right"){
+              fx = "down";
+            }else if( fx == "up"){
+              fx = "right";
+            }
+            anima();
+          }else if (ipt.value == "TUN BAC" || ipt.value == "tun bac") {
+            if(fx == "down"){
+              fx = "up";
+            }else if(fx == "left"){
+              fx = "right";
+            }else if(fx == "right"){
+              fx = "left";
+            }else if( fx == "up"){
+              fx = "down";
+            }
+            anima();
+          }else if(ipt.value == "GO" || ipt.value == "go"){
+            move();
+          }else if(ipt.value == "TRA LEF" || ipt.value == "tra lef"){
+            move("left");
+          }else if(ipt.value == "TRA TOP" || ipt.value == "tra top"){
+            move("up");
+          }else if(ipt.value == "TRA RIG" || ipt.value == "tra rig"){
+            move("right");
+          }else if(ipt.value == "TRA BOT" || ipt.value == "tra bot"){
+            move("down");
+          }else if(ipt.value == "MOV LEF" || ipt.value == "mov lef"){
+            if(zb[1] == 0){
+              alert("撞墙了");
+            }else{
+              fx = "left";
+              anima();
+              setTimeout(function(){
+                move();
+              },1000);
+            }
+          }else if(ipt.value == "MOV TOP" || ipt.value == "mov top"){
+            if(zb[0] == 0){
+              alert("撞墙了");
+            }else{
+              fx = "up";
+              anima();
+              setTimeout(function(){
+                move();
+              },1000);
+            }
+          }else if(ipt.value == "MOV RIG" || ipt.value == "mov rig"){
+            if(zb[1] == 9){
+              alert("撞墙了");
+            }else{
+              fx = "right";
+              anima();
+              setTimeout(function(){
+                move();
+              },1000);
+            }
+          }else if(ipt.value == "MOV BOT" || ipt.value == "mov bot"){
+            if(zb[0] == 9){
+              alert("撞墙了");
+            }else{
+              fx = "down";
+              anima();
+              setTimeout(function(){
+                move();
+              },1000);
+            }
+          }else{
+            alert("请输入指定命令");
+          }
+        });
+      }
+
+      init();
+
+
+
+    </script>
   </body>
 </html>
