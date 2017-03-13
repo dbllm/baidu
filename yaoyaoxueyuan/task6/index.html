@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>耀耀学院-任务六</title>
+    <style media="screen">
+      html, body{
+        margin: 0;
+        padding: 0;
+      }
+      .lqbz{
+        text-align: center;
+      }
+      .lqbz > div{
+        margin: 50px 0;
+      }
+      .pop{
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+      .pop > .shadow{
+        width: 100%;
+        height: 100%;
+        background: black;
+        opacity: 0.5;
+      }
+      .pop > .window{
+        width: 300px;
+        height: 300px;
+        background: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 2;
+        text-align: center;
+      }
+      .pop > .window > button:first-child{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+      .pop > .window > button:last-child{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="lqbz">
+    </div>
+    <div class="pop">
+      <div class="shadow"></div>
+      <div class="window">
+        这是一个浮出层
+        <button>确定</button>
+        <button>取消</button>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var pop = document.querySelector(".pop"), shadow = document.querySelector(".shadow");
+      // 初始化  绑定点击事件
+      function init(){
+        var lqbz = document.querySelector(".lqbz");
+        for (var i = 0; i < 50; i++) {
+          var div = document.createElement("div");
+          div.innerHTML = "点击我，就可弹出浮出层！";
+          lqbz.appendChild(div);
+        }
+
+        lqbz.addEventListener("click",function(){
+          pop.style.display = "block";
+          // 当点击浮出层以外的部分，关闭浮出层
+          shadow.addEventListener("click",function(){
+            pop.style.display = "none";
+          });
+        });
+
+      }
+      init();
+    </script>
+  </body>
+</html>
