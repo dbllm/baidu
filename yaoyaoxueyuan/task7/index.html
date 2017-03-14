@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>耀耀学院-任务七</title>
+    <style media="screen">
+      .container{
+        width: 900px;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      table{
+        width: 100%;
+        height: 100%;
+        color: black;
+        text-align: center;
+      }
+      tr:first-child{
+        background: grey;
+        color: white;
+      }
+      td{
+        position: relative;
+      }
+      .up{
+        position: absolute;
+        right: 10px;
+        top: 11px;
+        border-top: 8px solid transparent;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid white;
+      }
+      .down{
+        position: absolute;
+        right: 10px;
+        top: 31px;
+        border-top: 8px solid white;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <table border="1" cellspacing="0">
+        <tbody>
+          <tr>
+            <td>姓名</td>
+            <td>语文 <div class="up"></div><div class="down"></div></td>
+            <td>数学 <div class="up"></div><div class="down"></div></td>
+            <td>英语 <div class="up"></div><div class="down"></div></td>
+            <td>总分 <div class="up"></div><div class="down"></div></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script type="text/javascript">
+      // 设置需要的常亮变量已经获取dom元素
+      var xm = ["小明", 80, 90, 70, 240], xh = ["小红", 90, 60, 90, 240], xl = ["小亮", 60, 100, 70, 230], xw = ["小王", 70, 80, 70, 220],
+         list = [xm, xh, xl, xw], vr = document.querySelectorAll("tr:not(:first-child)"), up = document.querySelectorAll(".up"), down = document.querySelectorAll(".down");
+
+
+      // 更新页面的数据
+      function update(){
+        for (let i = 0, j = vr.length; i < j; i++) {
+          let td = vr[i].querySelectorAll("td");
+          for (let ii = 0, jj = td.length; ii < jj; ii++) {
+            td[ii].innerHTML = list[i][ii];
+          }
+        }
+      }
+
+      // 初始化
+      function init(){
+        for (let i = 0,j = up.length; i < j; i++) {
+          up[i].addEventListener("click",function(){
+            list = list.sort(function(a,b){
+              var test = i + 1;
+              return b[test]-a[test];
+            });
+            update();
+          });
+        }
+
+        for (let i = 0,j = down.length; i < j; i++) {
+          down[i].addEventListener("click",function(){
+            list = list.sort(function(a,b){
+              var test = i + 1;
+              return a[test]-b[test];
+            });
+            update();
+          });
+        }
+
+        update();
+      }
+      init();
+    </script>
+  </body>
+</html>
