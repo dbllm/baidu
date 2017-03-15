@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      html, body{
+        margin: 0;
+        padding: 0;
+      }
+      .welcome{
+        width: 100%;
+        text-align: center;
+        height: 50px;
+        background-image: -webkit-linear-gradient(left, blue, red 25%, blue 50%, red 75%, blue 100%);
+        -webkit-background-clip: text;
+        color: transparent;
+        background-size: 200% 100%;
+        animation: streamer 3s infinite linear;
+        font-size: 40px;
+        position: absolute;
+        top: 50px;
+        z-index: 1;
+        display: none;
+      }
+      @keyframes streamer {
+        0%  {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: -100% 0;
+        }
+      }
+      .conteiner{
+        width: 550px;
+        height: 309px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+      }
+      .img{
+        width: 550px;
+        height: 309px;
+        background: url(img/dota2.jpg) no-repeat left center;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .word{
+        width: 450px;
+        height: 210px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+      }
+      .l_r{
+        width: 450px;
+        height: 0;
+        transition: 1s;
+        border-left: 2px solid white;
+        border-right: 2px solid white;
+        position: relative;
+        top: 50%;
+        z-index: 2;
+        display: block;
+      }
+      .t_b{
+        width: 0;
+        height: 210px;
+        transition: 1s;
+        border-top: 2px solid white;
+        border-bottom: 2px solid white;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: 2;
+        display: block;
+      }
+      .conteiner:hover .img{
+        filter: blur(3px);
+      }
+      .conteiner:hover .welcome{
+        display: block;
+      }
+      .conteiner:hover div.l_r{
+        height: 210px;
+        top: 0;
+      }
+      .conteiner:hover div.t_b{
+        width: 450px;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="conteiner">
+      <div class="img"></div>
+      <div class="word">
+        <div class="welcome">欢迎来玩DOTA2 </div>
+        <div class="l_r"></div>
+        <div class="t_b"></div>
+      </div>
+    </div>
+  </body>
+</html>
