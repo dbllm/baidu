@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>百度糯米——任务二</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+    // 构造函数Observer  也可以叫类
+      function Observer(obj){
+        this.data = {
+          name: obj.name,
+          age: obj.age,
+          university: obj.university,
+          major: obj.major
+        };
+      }
+
+    // app1是 构造函数Observer的子类
+      let app1 = new Observer({
+        name: 'youngwind',
+        age: 25
+      });
+    // app2是 构造函数Observer的子类
+      let app2 = new Observer({
+        university: 'bupt',
+        major: 'computer'
+      });
+
+      console.log(app1.data.name);
+      app1.data.age = 100;
+      console.log(app1.data.age);
+
+      console.log(app2.data.university);
+      app2.data.major = 'science';
+      console.log(app2.data.major);
+    </script>
+  </body>
+</html>
