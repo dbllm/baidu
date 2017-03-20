@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>百度糯米——任务三</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      "use scrict";
+
+
+
+      function Event(){
+        this.events = {};
+      }
+
+
+      Event.prototype.on = function(attr, callback){
+        if(this.events[attr]){
+          this.events[attr].push(callback);
+        }else {
+          this.events[attr] = [callback];
+        }
+      }
+
+
+      Event.prototype.off = function(attr){
+        for(let key in this.events){
+          if(this.events.hasOwnProperty(key) && key === attr){
+            delete this.events[key];
+          }
+        }
+      }
+
+
+
+      Event.prototype.emit = function(attr, ...arg){
+
+        this.events[attr] && this.events[attr].forEach(function(item){
+          item(...arg)
+        });
+      }
+
+
+
+
+
+
+      function Observer(data){
+        this.data = data;
+        this.walk(data);
+        this.eventsBus = new Event();
+      }
+
+
+      Observer.prototype.walk = function (obj) {
+        let val;
+        for (var i in obj) {
+          if (obj.hasOwnProperty(i)) {
+            val = obj[i];
+            if(typeof val == "object"){
+              new Observer(val);
+            }
+
+            this.convert(i, val);
+          }
+        }
+      };
+
+      // 写了半天，发现没啥用
+      // function if_obj(key, val, obj){
+      //   let vall = val;
+      //   if(typeof val == "object"){
+      //     for (let i in val) {
+      //       if_obj(i, val[i], val);
+      //     }
+      //   }else{
+      //     console.log("你设置了 " + key + " 新的值为 " + val);
+      //     Object.defineProperty(obj, key, {
+      //       get: function(){
+      //         console.log("你访问了 " + key);
+      //         return vall;
+      //       },
+      //       set: function(newVal){
+      //         console.log("你设置了 " + key + " 新的值为 " + newVal);
+      //         vall = newVal;
+      //       },
+      //       enumerable: true,
+      //       configurable: true
+      //     });
+      //   }
+      // }
+
+
+      Observer.prototype.$watch = function(attr, callback){
+        this.eventsBus.on(attr, callback);
+      }
+
+
+
+
+
+      Observer.prototype.convert = function(key, val){
+        let that = this;
+        Object.defineProperty(this.data, key, {
+          get: function(){
+            if(typeof val !== "object"){
+              console.log("你访问了 " + key);
+            }
+            return val;
+          },
+          set: function(newVal){
+            val = newVal;
+            console.log("你设置了 " + key + " 新的值为 " + newVal);
+            if(typeof newVal == "object"){
+              // for (let i in newVal) {
+              //   if_obj(i, newVal[i], newVal);
+              // }
+              new Observer(val);
+            }
+            that.eventsBus.emit(key, val, newVal);
+          },
+          enumerable: true,
+          configurable: true
+        });
+      }
+
+      let app1 = new Observer({
+        name: 'youngwind',
+        age: 25
+      });
+
+      app1.data.name = {
+        lastName: 'liang',
+        firstName: 'shaofeng'
+      };
+
+
+      let app2 = new Observer({
+        name: "youngwind",
+        age: 25
+      });
+
+
+      console.log(app1.data.name.lastName);
+      app1.data.name.firstName = 'lalala';
+      console.log(app1.data.name.firstName);
+
+
+
+
+      app2.$watch("age",function(age){
+        console.log(`我的年纪变了，现在已经是${age}岁了`);
+      });
+
+      app2.data.age = 100;
+
+
+
+    </script>
+  </body>
+</html>
