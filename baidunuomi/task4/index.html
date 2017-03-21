@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>百度糯米——任务三</title>
+    <title>百度糯米——任务四</title>
   </head>
   <body>
     见控制台
@@ -11,12 +11,12 @@
       "use scrict";
 
 
-      // 事件类
+
       function Event(){
         this.events = {};
       }
 
-      // 添加绑定时间函数
+
       Event.prototype.on = function(attr, callback){
         if(this.events[attr]){
           this.events[attr].push(callback);
@@ -25,7 +25,7 @@
         }
       }
 
-      接触绑定事件函数
+
       Event.prototype.off = function(attr){
         for(let key in this.events){
           if(this.events.hasOwnProperty(key) && key === attr){
@@ -47,14 +47,14 @@
 
 
 
-      // 构造函数Observer  也可以叫类
+
       function Observer(data){
         this.data = data;
         this.walk(data);
         this.eventsBus = new Event();
       }
 
-      // 如果赋的某个值是对象，那么再new一次(new相当于创建实例) 如果不是，那就执行convert
+
       Observer.prototype.walk = function (obj) {
         let val;
         for (var i in obj) {
@@ -93,7 +93,7 @@
       //   }
       // }
 
-      // 写watch函数
+
       Observer.prototype.$watch = function(attr, callback){
         this.eventsBus.on(attr, callback);
       }
@@ -101,7 +101,7 @@
 
 
 
-      // 写getter和setter
+
       Observer.prototype.convert = function(key, val){
         let that = this;
         Object.defineProperty(this.data, key, {
@@ -128,38 +128,22 @@
       }
 
 
-      // 创建一个实例
-      let app1 = new Observer({
-        name: 'youngwind',
-        age: 25
-      });
-
-      app1.data.name = {
-        lastName: 'liang',
-        firstName: 'shaofeng'
-      };
-
-
-      // 创建一个实例
       let app2 = new Observer({
-        name: "youngwind",
-        age: 25
+          name: {
+              firstName: 'shaofeng',
+              lastName: 'liang'
+          },
+          age: 25
       });
 
-
-      console.log(app1.data.name.lastName);
-      app1.data.name.firstName = 'lalala';
-      console.log(app1.data.name.firstName);
-
-
-
-
-      app2.$watch("age",function(age){
-        console.log(`我的年纪变了，现在已经是${age}岁了`);
+      app2.$watch('name', function (newName) {
+          console.log('我的姓名发生了变化，可能是姓氏变了，也可能是名字变了。')
       });
 
-      app2.data.age = 100;
-
+      app2.data.name.firstName = 'hahaha';
+      // 输出：我的姓名发生了变化，可能是姓氏变了，也可能是名字变了。
+      app2.data.name.lastName = 'blablabla';
+      // 输出：我的姓名发生了变化，可能是姓氏变了，也可能是名字变了。
 
 
     </script>
