@@ -11,14 +11,13 @@
       "use scrict";
 
 
-
+      // 存储事件的类
       function Event(){
         this.events = {};
       }
 
-
+      // 绑定事件的函数
       Event.prototype.on = function(attr, callback){
-
         if(this.events[attr]){
           this.events[attr].push(callback);
         }else {
@@ -26,7 +25,7 @@
         }
       }
 
-
+      // 去除绑定事件的函数
       Event.prototype.off = function(attr){
         for(let key in this.events){
           if(this.events.hasOwnProperty(key) && key === attr){
@@ -36,7 +35,7 @@
       }
 
 
-
+      // 执行指定的参数所绑定的事件
       Event.prototype.emit = function(attr, ...arg){
         this.events[attr] && this.events[attr].forEach(function(item){
           item(...arg);
@@ -52,9 +51,13 @@
         this.data = data;
         this.walk(data);
         this.eventsBus = new Event();
+        this.parent = {};
+        this.eee = {};
         for (let i in data) {
           if (data.hasOwnProperty(i)) {
-            // console.log(data[i]);
+            if(typeof data[i] == "object"){
+              this.parent[i] = data[i];
+            }
           }
         }
       }
@@ -66,7 +69,6 @@
           if (obj.hasOwnProperty(i)) {
             val = obj[i];
             if(typeof val == "object"){
-
               new Observer(val);
             }
             this.convert(i, val);
@@ -77,9 +79,28 @@
 
 
       Observer.prototype.$watch = function(attr, callback){
+        for (let v in this.parent) {
+          if (this.parent.hasOwnProperty(v)) {
+            if(v == attr){
+              this.test(this.parent[v], callback);
+            }
+          }
+        }
         this.eventsBus.on(attr, callback);
       }
 
+
+
+      Observer.prototype.test = function(obj, callback){
+        for (let v in obj) {
+          if (obj.hasOwnProperty(v)) {
+            if(typeof obj[v] == "object"){
+              this.test(obj[v], callback);
+            }
+            this.eee[v] = callback;
+          }
+        }
+      }
 
 
 
@@ -93,6 +114,7 @@
           },
           set: function(newVal){
             that.eventsBus.emit(key, val, newVal);
+
             console.log("你设置了 " + key + " 新的值为 " + newVal);
             val = newVal;
 
@@ -127,8 +149,8 @@
       //     console.log('我的姓名发生了变化，可能是姓氏变了，也可能是名字变了。')
       // });
       // app2.data.age = 123;
-      // app2.data.name.firstName = 'hahaha';
-      console.log(app2.data.name);
+      app2.data.name.firstName = 'hahaha';
+      // console.log(app2.data.name);
 
       // 输出：我的姓名发生了变化，可能是姓氏变了，也可能是名字变了。
       // app2.data.name.lastName = 'blablabla';

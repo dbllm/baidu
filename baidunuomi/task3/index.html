@@ -25,7 +25,7 @@
         }
       }
 
-      接触绑定事件函数
+      // 接触绑定事件函数
       Event.prototype.off = function(attr){
         for(let key in this.events){
           if(this.events.hasOwnProperty(key) && key === attr){
@@ -35,7 +35,7 @@
       }
 
 
-
+        // 执行指定的参数所绑定的事件
       Event.prototype.emit = function(attr, ...arg){
 
         this.events[attr] && this.events[attr].forEach(function(item){
@@ -93,6 +93,7 @@
       //   }
       // }
 
+
       // 写watch函数
       Observer.prototype.$watch = function(attr, callback){
         this.eventsBus.on(attr, callback);
@@ -106,8 +107,10 @@
         let that = this;
         Object.defineProperty(this.data, key, {
           get: function(){
+            if(typeof val != "object"){
+              console.log("你访问了 " + key);
+            }
 
-            console.log("你访问了 " + key);
 
             return val;
           },
@@ -140,6 +143,10 @@
       };
 
 
+      console.log(app1.data.name.lastName);
+      app1.data.name.firstName = 'lalala';
+      console.log(app1.data.name.firstName);
+
       // 创建一个实例
       let app2 = new Observer({
         name: "youngwind",
@@ -147,9 +154,7 @@
       });
 
 
-      console.log(app1.data.name.lastName);
-      app1.data.name.firstName = 'lalala';
-      console.log(app1.data.name.firstName);
+
 
 
 
