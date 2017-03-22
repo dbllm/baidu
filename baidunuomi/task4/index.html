@@ -18,6 +18,7 @@
 
 
       Event.prototype.on = function(attr, callback){
+
         if(this.events[attr]){
           this.events[attr].push(callback);
         }else {
@@ -37,9 +38,8 @@
 
 
       Event.prototype.emit = function(attr, ...arg){
-
         this.events[attr] && this.events[attr].forEach(function(item){
-          item(...arg)
+          item(...arg);
         });
       }
 
@@ -52,46 +52,28 @@
         this.data = data;
         this.walk(data);
         this.eventsBus = new Event();
+        for (let i in data) {
+          if (data.hasOwnProperty(i)) {
+            // console.log(data[i]);
+          }
+        }
       }
 
 
       Observer.prototype.walk = function (obj) {
-        let val;
+        let val, that = this;
         for (var i in obj) {
           if (obj.hasOwnProperty(i)) {
             val = obj[i];
             if(typeof val == "object"){
+
               new Observer(val);
             }
-
             this.convert(i, val);
           }
         }
       };
 
-      // 写了半天，发现没啥用
-      // function if_obj(key, val, obj){
-      //   let vall = val;
-      //   if(typeof val == "object"){
-      //     for (let i in val) {
-      //       if_obj(i, val[i], val);
-      //     }
-      //   }else{
-      //     console.log("你设置了 " + key + " 新的值为 " + val);
-      //     Object.defineProperty(obj, key, {
-      //       get: function(){
-      //         console.log("你访问了 " + key);
-      //         return vall;
-      //       },
-      //       set: function(newVal){
-      //         console.log("你设置了 " + key + " 新的值为 " + newVal);
-      //         vall = newVal;
-      //       },
-      //       enumerable: true,
-      //       configurable: true
-      //     });
-      //   }
-      // }
 
 
       Observer.prototype.$watch = function(attr, callback){
@@ -106,21 +88,22 @@
         let that = this;
         Object.defineProperty(this.data, key, {
           get: function(){
-            if(typeof val !== "object"){
-              console.log("你访问了 " + key);
-            }
+            console.log("你访问了 " + key);
             return val;
           },
           set: function(newVal){
-            val = newVal;
+            that.eventsBus.emit(key, val, newVal);
             console.log("你设置了 " + key + " 新的值为 " + newVal);
+            val = newVal;
+
             if(typeof newVal == "object"){
               // for (let i in newVal) {
               //   if_obj(i, newVal[i], newVal);
               // }
+
               new Observer(val);
             }
-            that.eventsBus.emit(key, val, newVal);
+
           },
           enumerable: true,
           configurable: true
@@ -136,13 +119,19 @@
           age: 25
       });
 
+
       app2.$watch('name', function (newName) {
           console.log('我的姓名发生了变化，可能是姓氏变了，也可能是名字变了。')
       });
+      // app2.$watch('age', function (newName) {
+      //     console.log('我的姓名发生了变化，可能是姓氏变了，也可能是名字变了。')
+      // });
+      // app2.data.age = 123;
+      // app2.data.name.firstName = 'hahaha';
+      console.log(app2.data.name);
 
-      app2.data.name.firstName = 'hahaha';
       // 输出：我的姓名发生了变化，可能是姓氏变了，也可能是名字变了。
-      app2.data.name.lastName = 'blablabla';
+      // app2.data.name.lastName = 'blablabla';
       // 输出：我的姓名发生了变化，可能是姓氏变了，也可能是名字变了。
 
 

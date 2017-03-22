@@ -106,9 +106,9 @@
         let that = this;
         Object.defineProperty(this.data, key, {
           get: function(){
-            if(typeof val !== "object"){
-              console.log("你访问了 " + key);
-            }
+
+            console.log("你访问了 " + key);
+
             return val;
           },
           set: function(newVal){
