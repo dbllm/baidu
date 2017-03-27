@@ -107,7 +107,7 @@
 
             if (Object.prototype.toString.call(newVal) === '[object Object]') {
               that.setData = newValue
-              that.each(newValue)
+              that.walk(newValue)
               that.setData = null
             }
 
